@@ -6,11 +6,12 @@ A comprehensive WebRTC-based communication solution that integrates with Genesys
 
 ### Core Features
 - ✅ WebRTC peer-to-peer audio/video calls
-- ✅ SIP.js integration with Genesys PureEngage
+- ✅ SIP.js integration with **Genesys PureEngage** or **Asterisk PBX**
 - ✅ Real-time signaling server with Socket.IO
 - ✅ Agent authentication and registration
 - ✅ Inbound and outbound call handling
 - ✅ Modern, responsive web interface
+- ✅ Works with Asterisk, Genesys, or hybrid mode
 
 ### Call Controls
 - 🎤 Audio mute/unmute
@@ -19,8 +20,10 @@ A comprehensive WebRTC-based communication solution that integrates with Genesys
 - ➡️ Call transfer
 - 🔢 DTMF tone support (SIP calls)
 
-### Genesys Integration
-- 📞 SIP registration with Genesys PureEngage
+### PBX Integration
+- 📞 **Asterisk PBX** - Full open-source PBX integration
+- 📞 **Genesys PureEngage** - Enterprise contact center integration
+- 🔀 **Hybrid Mode** - Use both systems simultaneously
 - 📲 Incoming call notifications
 - 🔄 Call state synchronization
 - 👤 Agent presence management

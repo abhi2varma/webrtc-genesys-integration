@@ -1,0 +1,59 @@
+# Asterisk Configuration for WebRTC Application
+# Copy these settings to your .env file
+
+# ============================================
+# SERVER CONFIGURATION
+# ============================================
+PORT=3000
+NODE_ENV=production
+APP_DOMAIN=webrtc.yourcompany.com
+
+# ============================================
+# PBX MODE
+# ============================================
+# Options: 'asterisk', 'genesys', 'hybrid'
+PBX_MODE=asterisk
+
+# ============================================
+# ASTERISK CONFIGURATION
+# ============================================
+# Asterisk WebSocket URL (WSS)
+ASTERISK_WSS_URL=wss://asterisk.yourcompany.com:8089/ws
+
+# Asterisk realm/domain
+ASTERISK_REALM=asterisk.yourcompany.com
+
+# STUN server for ICE
+ASTERISK_STUN=stun:stun.l.google.com:19302
+
+# ============================================
+# OPTIONAL: TURN SERVER
+# ============================================
+# Usually not needed with Asterisk since it handles media
+# But can be used for very restrictive firewalls
+TURN_SERVER=
+TURN_USERNAME=
+TURN_CREDENTIAL=
+
+# ============================================
+# OPTIONAL: GENESYS (for Hybrid Mode)
+# ============================================
+# Keep these if you want to support both Asterisk and Genesys
+GENESYS_WEBSOCKET_SERVER=
+GENESYS_SIP_SERVER=
+GENESYS_SIP_PORT=5060
+GENESYS_REALM=
+GENESYS_TENANT=
+
+# ============================================
+# SECURITY
+# ============================================
+ALLOWED_ORIGINS=https://webrtc.yourcompany.com
+SESSION_SECRET=generate-random-32-char-string
+
+# ============================================
+# SSL (if running Node.js with HTTPS)
+# ============================================
+SSL_KEY=/etc/letsencrypt/live/webrtc.yourcompany.com/privkey.pem
+SSL_CERT=/etc/letsencrypt/live/webrtc.yourcompany.com/fullchain.pem
+
