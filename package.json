@@ -1,0 +1,34 @@
+{
+  "name": "webrtc-genesys-integration",
+  "version": "1.0.0",
+  "description": "WebRTC Client and Server with Genesys PureEngage Integration",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "start:https": "node server-https.js",
+    "dev": "nodemon server.js",
+    "production": "NODE_ENV=production node server-https.js",
+    "test": "echo \"No tests yet\" && exit 0"
+  },
+  "keywords": [
+    "webrtc",
+    "genesys",
+    "pureengage",
+    "sip",
+    "voip"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.6.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "sip.js": "^0.21.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
+
+

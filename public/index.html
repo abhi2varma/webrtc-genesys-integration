@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebRTC Genesys PureEngage Client</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>WebRTC Genesys PureEngage Client</h1>
+            <div class="status-indicator" id="connectionStatus">
+                <span class="status-dot"></span>
+                <span class="status-text">Disconnected</span>
+            </div>
+        </header>
+
+        <!-- Login Section -->
+        <div id="loginSection" class="section">
+            <h2>Agent Login</h2>
+            <div class="form-group">
+                <label for="agentId">Agent ID:</label>
+                <input type="text" id="agentId" placeholder="Enter your agent ID">
+            </div>
+            <div class="form-group">
+                <label for="extension">Extension:</label>
+                <input type="text" id="extension" placeholder="Enter your extension">
+            </div>
+            <div class="form-group">
+                <label for="sipUsername">SIP Username:</label>
+                <input type="text" id="sipUsername" placeholder="Enter SIP username">
+            </div>
+            <div class="form-group">
+                <label for="sipPassword">SIP Password:</label>
+                <input type="password" id="sipPassword" placeholder="Enter SIP password">
+            </div>
+            <button id="loginBtn" class="btn btn-primary">Login & Register</button>
+        </div>
+
+        <!-- Call Section -->
+        <div id="callSection" class="section hidden">
+            <div class="info-panel">
+                <div class="info-item">
+                    <strong>Agent ID:</strong> <span id="displayAgentId"></span>
+                </div>
+                <div class="info-item">
+                    <strong>Extension:</strong> <span id="displayExtension"></span>
+                </div>
+                <div class="info-item">
+                    <strong>SIP Status:</strong> <span id="sipStatus">Not Connected</span>
+                </div>
+                <div class="info-item">
+                    <strong>Call State:</strong> <span id="callState">Idle</span>
+                </div>
+            </div>
+
+            <div class="video-container">
+                <div class="video-wrapper">
+                    <video id="remoteVideo" autoplay playsinline></video>
+                    <div class="video-label">Remote</div>
+                    <div id="remoteAudioIndicator" class="audio-indicator hidden">
+                        <span>🔇 Remote Muted</span>
+                    </div>
+                </div>
+                <div class="video-wrapper local">
+                    <video id="localVideo" autoplay muted playsinline></video>
+                    <div class="video-label">Local (You)</div>
+                </div>
+            </div>
+
+            <div class="audio-container">
+                <audio id="remoteAudio" autoplay></audio>
+                <audio id="ringbackTone" loop>
+                    <source src="audio/ringback.mp3" type="audio/mpeg">
+                </audio>
+            </div>
+
+            <div class="call-controls">
+                <div class="form-group">
+                    <label for="roomId">Room/Call ID:</label>
+                    <input type="text" id="roomId" placeholder="Enter room ID or phone number">
+                </div>
+                
+                <div class="button-group">
+                    <button id="startCallBtn" class="btn btn-success">Start Call</button>
+                    <button id="endCallBtn" class="btn btn-danger hidden">End Call</button>
+                </div>
+
+                <div class="control-buttons">
+                    <button id="muteBtn" class="btn btn-control" disabled>
+                        <span>🎤</span> Mute
+                    </button>
+                    <button id="videoBtn" class="btn btn-control" disabled>
+                        <span>📹</span> Video Off
+                    </button>
+                    <button id="holdBtn" class="btn btn-control" disabled>
+                        <span>⏸️</span> Hold
+                    </button>
+                    <button id="transferBtn" class="btn btn-control" disabled>
+                        <span>➡️</span> Transfer
+                    </button>
+                </div>
+            </div>
+
+            <!-- Transfer Dialog -->
+            <div id="transferDialog" class="modal hidden">
+                <div class="modal-content">
+                    <h3>Transfer Call</h3>
+                    <div class="form-group">
+                        <label for="transferTarget">Transfer to (Agent ID or Number):</label>
+                        <input type="text" id="transferTarget" placeholder="Enter agent ID or phone number">
+                    </div>
+                    <div class="button-group">
+                        <button id="confirmTransferBtn" class="btn btn-primary">Confirm Transfer</button>
+                        <button id="cancelTransferBtn" class="btn btn-secondary">Cancel</button>
+                    </div>
+                </div>
+            </div>
+
+            <button id="logoutBtn" class="btn btn-secondary">Logout</button>
+        </div>
+
+        <!-- Logs Section -->
+        <div class="logs-section">
+            <h3>Activity Log</h3>
+            <div id="logContainer" class="log-container"></div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sip.js@0.21.2/dist/sip.min.js"></script>
+    <script src="genesys-integration.js"></script>
+    <script src="webrtc-client.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+
+
+

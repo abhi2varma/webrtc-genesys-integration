@@ -1,0 +1,32 @@
+# Production Configuration for Internet Deployment
+# Copy these settings to your .env file and update with your actual values
+
+PORT=3000
+NODE_ENV=production
+APP_DOMAIN=webrtc.yourcompany.com
+
+# SSL (if running Node.js directly with HTTPS, optional if using Nginx)
+SSL_KEY=/etc/letsencrypt/live/webrtc.yourcompany.com/privkey.pem
+SSL_CERT=/etc/letsencrypt/live/webrtc.yourcompany.com/fullchain.pem
+
+# Genesys (use internal IP if connected via VPN - RECOMMENDED)
+GENESYS_WEBSOCKET_SERVER=wss://192.168.1.100:8443/ws
+GENESYS_SIP_SERVER=192.168.1.100
+GENESYS_SIP_PORT=5060
+GENESYS_REALM=yourcompany.local
+GENESYS_TENANT=your-tenant-name
+
+# STUN/TURN (TURN is REQUIRED for internet deployment!)
+STUN_SERVER=stun:stun.l.google.com:19302
+
+# Choose one TURN option:
+# Twilio TURN (Recommended):
+TURN_SERVER=turn:global.turn.twilio.com:3478?transport=tcp
+TURN_USERNAME=your-twilio-username
+TURN_CREDENTIAL=your-twilio-credential
+
+# Security
+ALLOWED_ORIGINS=https://webrtc.yourcompany.com
+SESSION_SECRET=generate-a-random-32-character-string-here
+
+
